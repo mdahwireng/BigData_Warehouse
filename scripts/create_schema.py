@@ -1,6 +1,5 @@
-import mysql.connector
-myConnection = mysql.connector.connect( host='localhost', user='warehouse', passwd='password')
-mycursor = myConnection.cursor()
+from mysql.connector import connection
+from sql_utilities import create_conn, run_script
 
 script = """CREATE SCHEMA IF NOT EXISTS `Warehouse` ;
 USE `Warehouse` ;
@@ -45,5 +44,8 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;"""
-mycursor.execute(script)
-mycursor.close()
+
+
+myConnection = create_conn( host='localhost', user='warehouse', password='password')
+
+run_script(connection=myConnection, script=script)
