@@ -14,9 +14,9 @@ CREATE TABLE IF NOT EXISTS `Warehouse`.`stations` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Warehouse`.`weekdays` (
-  `weekdays_id` INT NOT NULL,
+  `weekday_id` INT NOT NULL,
   `day` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`weekdays_id`))
+  PRIMARY KEY (`weekday_id`))
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Warehouse`.`traffic` (
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `Warehouse`.`traffic` (
   `min` INT NOT NULL,
   `sec` INT NOT NULL,
   `tot_flow` VARCHAR(45) NOT NULL,
-  INDEX `fk_weekdays_idx` (`weekdays_id` ASC) VISIBLE,
+  INDEX `fk_weekdays_idx` (`weekday_id` ASC) VISIBLE,
   INDEX `fk_station_idx` (`station_id` ASC) VISIBLE,
   CONSTRAINT `fk_station`
     FOREIGN KEY (`station_id`)

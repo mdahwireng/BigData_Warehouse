@@ -35,8 +35,24 @@ def run_script(connection, script):
         mycursor.execute(script)
         print('Executing script... completed\n')
         mycursor.close()
-        
+
     except Error as e:
         print("Error encounted\n")
         print(e)
 
+def insert_to(connection,script,vals):
+    """Insert data into tables given a connection to database,script and values"""
+    try:
+        print('Creating cursor...\n')
+        mycursor = connection.cursor()
+        print('Creating cursor... completed\n')
+
+        print('Inserting values...\n')
+        mycursor.execute(script, vals)
+        print('Inserting values... completed\n')
+        connection.commit()
+        mycursor.close()
+
+    except Error as e:
+        print("Error encounted\n")
+        print(e)
