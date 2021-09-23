@@ -8,8 +8,8 @@ USE `Warehouse` ;
 CREATE TABLE IF NOT EXISTS `Warehouse`.`stations` (
   `id` INT NOT NULL,
   `name` VARCHAR(225) NOT NULL,
-  `lat` DECIMAL(6,5) NULL,
-  `long` DECIMAL(6,5) NULL,
+  `lat` DECIMAL(10,8) NULL,
+  `long` DECIMAL(11,8) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
