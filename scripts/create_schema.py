@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `Warehouse`.`traffic` (
   `hours` INT NOT NULL,
   `min` INT NOT NULL,
   `sec` INT NOT NULL,
-  `tot_flow` VARCHAR(45) NOT NULL,
+  `tot_flow` INT NOT NULL,
   INDEX `fk_weekdays_idx` (`weekday_id` ASC) VISIBLE,
   INDEX `fk_station_idx` (`station_id` ASC) VISIBLE,
   CONSTRAINT `fk_station`
@@ -45,7 +45,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;"""
 
+def create_schema():
+  myConnection = create_conn( host='localhost', user='warehouse', password='password')
 
-myConnection = create_conn( host='localhost', user='warehouse', password='password')
-
-run_script(connection=myConnection, script=script)
+  run_script(connection=myConnection, script=script)
