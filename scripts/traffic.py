@@ -24,5 +24,5 @@ def fill_traf():
                                 )
     traffic = pd.read_csv('data/traffic.csv')
     for row,k in traffic.iterrows():
-        vals = (k['ID'], k['weekday'], k['hours'], k['min'], k['sec'], k['totalflow'])
+        vals = (k['ID'], k['weekday'], k['hour'], k['min'], k['sec'], k['totalflow'])
         insert_to(connection=myConnection, vals=vals, script=script)
