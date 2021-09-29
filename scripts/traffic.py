@@ -26,3 +26,8 @@ def fill_traf():
     for row,k in traffic.iterrows():
         vals = (int(k['ID']), int(k['weekday']), int(k['hour']), int(k['minute']), int(k['second']), int(k['totalflow']))
         insert_to(connection=myConnection, vals=vals, script=script)
+
+def populate_traff():
+    create_traf_data()
+    fill_traf()
+    
