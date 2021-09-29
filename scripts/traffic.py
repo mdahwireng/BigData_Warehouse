@@ -15,7 +15,7 @@ def create_traf_data():
     traffic.to_csv('data/traffic.csv')
 
 def fill_traf():
-    script =  """INSERT INTO `stations` (`station_id`, `weekday_id`, `hours`, `min`, `sec`, `tot_flow`) VALUES (%s, %s, %s, %s)"""
+    script =  """INSERT INTO `traffic` (`station_id`, `weekday_id`, `hours`, `min`, `sec`, `tot_flow`) VALUES (%s, %s, %s, %s, %s, %s)"""
     myConnection = create_conn( 
                                 host='localhost', 
                                 user='warehouse', 
@@ -24,5 +24,5 @@ def fill_traf():
                                 )
     traffic = pd.read_csv('data/traffic.csv')
     for row,k in traffic.iterrows():
-        vals = (k['ID'], k['weekday'], k['hour'], k['min'], k['sec'], k['totalflow'])
+        vals = (int(k['ID']), int(k['weekday']), int(k['hour']), int(k['minute']), int(k['second']), int(k['totalflow']))
         insert_to(connection=myConnection, vals=vals, script=script)
