@@ -15,7 +15,7 @@ def create_traf_data():
     traffic.to_csv('data/traffic.csv')
 
 def fill_traf():
-    script =  """INSERT INTO `traffic` (`station_id`, `weekday_id`, `hours`, `min`, `sec`, `tot_flow`) VALUES (%s, %s, %s, %s, %s, %s)"""
+    script =  """INSERT INTO `traffic` (`station_id`, `weekday_id`, `hour`, `min`, `sec`, `tot_flow`) VALUES (%s, %s, %s, %s, %s, %s)"""
     myConnection = create_conn( 
                                 host='localhost', 
                                 user='warehouse', 

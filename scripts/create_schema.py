@@ -22,7 +22,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Warehouse`.`traffic` (
   `station_id` INT NOT NULL,
   `weekday_id` INT NOT NULL,
-  `hours` INT NOT NULL,
+  `hour` INT NOT NULL,
   `min` INT NOT NULL,
   `sec` INT NOT NULL,
   `tot_flow` INT NOT NULL,
