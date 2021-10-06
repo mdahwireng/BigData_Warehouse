@@ -82,7 +82,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Warehouse`.`traffic` (
   `station_id` INT NOT NULL,
   `weekday_id` INT NOT NULL,
-  `hours` INT NOT NULL,
+  `hour` INT NOT NULL,
   `min` INT NOT NULL,
   `sec` INT NOT NULL,
   `tot_flow` INT NOT NULL,
@@ -155,20 +155,19 @@ def create_traf_data():
     traffic.to_csv('data/traffic.csv')
 
 def fill_traf():
-    script =  """INSERT INTO `traffic` (`station_id`, `weekday_id`, `hours`, `min`, `sec`, `tot_flow`) VALUES (%s, %s, %s, %s, %s, %s)"""
+    script =  """INSERT INTO `traffic` (`station_id`, `weekday_id`, `hour`, `min`, `sec`, `tot_flow`) VALUES (%s, %s, %s, %s, %s, %s)"""
     myConnection = create_conn( 
                                 host='localhost', 
                                 user='warehouse', 
                                 password='password', 
                                 database='Warehouse'
                                 )
-    traffic = pd.read_csv('data/traffic.csv')
+    traffic = pd.read_csv('data/I80_median.csv')
     for row,k in traffic.iterrows():
         vals = (int(k['ID']), int(k['weekday']), int(k['hour']), int(k['minute']), int(k['second']), int(k['totalflow']))
         insert_to(connection=myConnection, vals=vals, script=script)
 
 def populate_traff():
-    create_traf_data()
     fill_traf()
     
 

@@ -22,12 +22,11 @@ def fill_traf():
                                 password='password', 
                                 database='Warehouse'
                                 )
-    traffic = pd.read_csv('data/traffic.csv')
+    traffic = pd.read_csv('data/I80_median.csv')
     for row,k in traffic.iterrows():
         vals = (int(k['ID']), int(k['weekday']), int(k['hour']), int(k['minute']), int(k['second']), int(k['totalflow']))
         insert_to(connection=myConnection, vals=vals, script=script)
 
 def populate_traff():
-    create_traf_data()
     fill_traf()
     
